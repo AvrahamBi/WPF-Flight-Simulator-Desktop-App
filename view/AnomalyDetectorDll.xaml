@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="FlightSimulator2.view.AnomalyDetectorDll"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator2.view"
+             mc:Ignorable="d" Height="454.333" Width="880.987">
+    <Grid Margin="310,248,-47,22" RenderTransformOrigin="0.485,0.489">
+        <Button x:Name="dll" Content="Upload Dll" HorizontalAlignment="Left" Margin="-285,75,0,0" VerticalAlignment="Top" Width="83" Click="Button_Click"/>
+        <Button x:Name="normal" Content="upload Normal flight " HorizontalAlignment="Left" Margin="-192,75,0,0" VerticalAlignment="Top" Width="131" Click="normal_Click"/>
+        <TextBox x:Name="dllFullPath" HorizontalAlignment="Left" Height="16" Margin="-285,54,0,0" TextWrapping="Wrap" Text="{Binding VM_Dll_path,Mode=TwoWay}" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="normalFlightFullPath" HorizontalAlignment="Left" Height="16" Margin="-192,54,0,0" TextWrapping="Wrap" Text="{Binding VM_Learning_flight_path,Mode=TwoWay}" VerticalAlignment="Top" Width="126"/>
+        <Button x:Name="startDetect" Content="Detect" HorizontalAlignment="Left" Margin="-228,29,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Click="startDetect_Click"/>
+        <ListView Margin="-49,10,179.8,85.4" Name="lvUsers">
+            <ListView.View>
+                <GridView x:Name="grids">
+                    <GridViewColumn x:Name="firs1" Header="First Attribute" Width="120" DisplayMemberBinding="{Binding First}" />
+                    <GridViewColumn Header="Second Attribute" Width="120" DisplayMemberBinding="{Binding Second}" />
+                    <GridViewColumn Header="Time" Width="120" DisplayMemberBinding="{Binding Time,Mode=TwoWay}" />
+                    <GridViewColumn Header="Detector Type" Width="120" DisplayMemberBinding="{Binding Detect}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

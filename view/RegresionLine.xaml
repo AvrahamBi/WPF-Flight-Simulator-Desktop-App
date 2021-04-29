@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="FlightSimulator2.view.RegresionLine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:local="clr-namespace:FlightSimulator2.view"
+             xmlns:viewmodel="clr-namespace:FlightSimulator2.viewModel" 
+             mc:Ignorable="d">
+    <Grid Width="200" Height="200">
+        <oxy:Plot x:Name="RegresionLineGraph" TitleFontSize="9" >
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis  Position="Left"/>
+                <oxy:LinearAxis  Position="Bottom"/>
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <oxy:LineSeries  ItemsSource="{Binding VM_LineByPoints , Mode=TwoWay}" />
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="FlightSimulator2.view.FeaturesGraphV"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:local="clr-namespace:FlightSimulator2.view"
+             xmlns:viewmodel="clr-namespace:FlightSimulator2.viewModel" 
+             mc:Ignorable="d">
+    <Grid Width="800" Height="450">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="featuresListBox" SelectionChanged="featuresListBox_SelectionChanged" SelectedItem="{Binding NameOfFeatureSelected , Mode=TwoWay}" ItemsSource="{Binding VM_FeaturesList}" Margin="10,68,608,50.6"/>
+        <TextBlock x:Name="FeatuersListBlock" Text="Featuers List"  HorizontalAlignment="Left" Grid.Row="0" Margin="63,0,0,0" />
+
+
+        <oxy:Plot x:Name="FeaturesGraph"   Title="{Binding NameOfFeatureSelected , Mode=TwoWay}" TitleFontSize="9" Margin="229,55,368,259.6" >
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis  Position="Left"/>
+                <oxy:LinearAxis  Position="Bottom"/>
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <oxy:LineSeries ItemsSource="{Binding VM_Points , Mode=TwoWay}"/>
+
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+        <oxy:Plot x:Name="CorrelationGraph" Title="{Binding  VM_CorrelatedF, Mode=TwoWay}" TitleFontSize="9" Margin="447,55,166,260.6" >
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis  Position="Left"/>
+                <oxy:LinearAxis  Position="Bottom"/>
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <oxy:LineSeries  ItemsSource="{Binding VM_CorrelatedPoints , Mode=TwoWay}" />
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+        <oxy:Plot x:Name="RegresionGraph" Title="RegresionGraph" TitleFontSize="9" Margin="269,216,166,50.6" >
+            <oxy:Plot.Axes>
+                <oxy:LinearAxis  Position="Left" IsPanEnabled="False" IsZoomEnabled="False" Title="{Binding VM_CorrelatedF, Mode=TwoWay}"/>
+                <oxy:LinearAxis  Position="Bottom" IsPanEnabled="False" IsZoomEnabled="False"  Title="{Binding NameOfFeatureSelected, Mode=TwoWay}" />
+
+            </oxy:Plot.Axes>
+            <oxy:Plot.Series>
+                <!--<oxy:LineSeries  ItemsSource="{Binding VM_LineReg , Mode=TwoWay}" />-->
+                <oxy:LineSeries ItemsSource="{Binding VM_RegPoints , Mode=TwoWay}" Color="Transparent" MarkerFill="Black" MarkerSize="2" MarkerType="Circle"/>
+                <oxy:LineSeries ItemsSource="{Binding VM_RegPoints30 , Mode=TwoWay}" Color="Transparent" MarkerFill="Red" MarkerSize="2" MarkerType="Circle"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+
+
+    </Grid>
+</UserControl>
